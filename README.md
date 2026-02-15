@@ -3,6 +3,8 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+![GitHub stars](https://img.shields.io/github/stars/yepicaiaaron/awesome-realtime-video-generation?style=social)
+![GitHub forks](https://img.shields.io/github/forks/yepicaiaaron/awesome-realtime-video-generation?style=social)
 
 A curated list of **real-time and near real-time video generation models** focused on production deployment and low-latency inference. If it can't run fast enough for practical applications, it's not here.
 
@@ -365,7 +367,7 @@ We welcome contributions! Please:
 
 ## 📧 Maintainer
 
-**Aaron Jones** ([@ajonesdev](https://github.com/ajonesdev))  
+**Aaron Jones** ([@yepicaiaaron](https://github.com/yepicaiaaron))  
 Expert in video generation infrastructure (Yepic AI, VideoStack)
 
 Questions? Open an issue or PR!
@@ -374,7 +376,7 @@ Questions? Open an issue or PR!
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ajonesdev/awesome-realtime-video-generation&type=Date)](https://star-history.com/#ajonesdev/awesome-realtime-video-generation&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=yepicaiaaron/awesome-realtime-video-generation&type=Date)](https://star-history.com/#yepicaiaaron/awesome-realtime-video-generation&Date)
 
 ---
 
