@@ -31,7 +31,9 @@ Most video generation research prioritizes quality over speed. This repo focuses
 | [Pyramidal Flow](#pyramidal-flow) | ~15s | A100 (80GB) | 24 | MIT | ✅ Production |
 | [VideoLCM](#videolcm) | ~18s | H100 (80GB) | 24 | - | 🔬 Research |
 | [SVD-XT (Turbo)](#stable-video-diffusion-turbo) | ~20s | A100 (40GB) | 25 | - | ✅ Production |
-| [URSA-1.7B](#ursa-uniform-discrete-diffusion) | ~20-25s (est.) | H100 (80GB) | 12 | Apache 2.0 | 🔬 ICLR 2026 |
+| [URSA-1.7B](#ursa-uniform-discrete-diffusion) † | ~20-25s (est.) | H100 (80GB) | 12 | Apache 2.0 | 🔬 ICLR 2026 |
+
+*† Multi-modal model (also generates images). See [Multi-Modal Models](#multi-modal-models-video--image-generation) section.*
 
 *Benchmarks measured on single GPU inference, T2V generation. Image-to-video typically 30-50% faster. CausVid streaming: initial latency 1.3s, then continuous frame generation.*
 
@@ -350,29 +352,7 @@ docker run --gpus all -p 8000:8000 fastvideo:latest
 
 ## 🔬 Experimental / Bleeding Edge
 
-### Autoregressive Models (Production-Approaching)
-
-#### URSA (Uniform Discrete Diffusion)
-**Developer**: BAAIV (Beijing Academy of AI) | **Released**: Oct 2025  
-**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
-
-- **Latency**: Estimated 15-25s for short clips (based on architecture)
-- **Hardware**: 0.6B model on RTX 4090, 1.7B on H100
-- **Architecture**: Discrete diffusion with metric path (successor to NOVA)
-- **Key Innovation**: Unified T2V/I2V/T2I in single model, no vector quantization
-- **Best For**: Multi-task video generation, research
-- **Status**: ICLR 2026 accepted, models released
-- **Links**: [GitHub](https://github.com/baaivision/URSA) | [Paper](https://arxiv.org/abs/2510.24717) | [HuggingFace](https://huggingface.co/collections/BAAI/ursa) | [Demo](https://huggingface.co/spaces/BAAI/nova-d48w1024-osp480)
-
-```python
-# URSA models available:
-# - URSA-0.6B-FSQ320: 49 frames @ 512x320
-# - URSA-1.7B-FSQ320: 49 frames @ 512x320 (higher quality)
-# - URSA-1.7B-IBQ1024: 1024x1024 images (T2I)
-# Unified pipeline supports T2I, T2V, I2V, V2V
-```
-
----
+### Autoregressive Models (Video-Only)
 
 #### NOVA
 **Developer**: BAAIV | **Released**: Dec 2024 (ICLR 2025)  
@@ -385,6 +365,35 @@ docker run --gpus all -p 8000:8000 fastvideo:latest
 - **Best For**: Research baseline, predecessor to URSA
 - **Status**: Code released, ICLR 2025 accepted
 - **Links**: [GitHub](https://github.com/baaivision/NOVA) | [Paper](https://arxiv.org/abs/2412.14169) | [Project](https://bitterdhg.github.io/NOVA_page/)
+
+---
+
+### Multi-Modal Models (Video + Image Generation)
+
+> **Note**: These models handle both video and image generation in a unified architecture. Included here because they support video generation at real-time speeds, but they're not video-only.
+
+#### URSA (Uniform Discrete Diffusion)
+**Developer**: BAAIV (Beijing Academy of AI) | **Released**: Oct 2025  
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐  
+**Modalities**: T2V, I2V, T2I, V2V
+
+- **Latency**: Estimated 15-25s for short video clips (based on architecture)
+- **Hardware**: 0.6B model on RTX 4090, 1.7B on H100
+- **Architecture**: Discrete diffusion with metric path (successor to NOVA)
+- **Key Innovation**: Single unified model replaces specialized T2V/T2I/I2V models, no vector quantization
+- **Best For**: Production pipelines needing both image + video generation from one endpoint
+- **Status**: ICLR 2026 accepted, models + code released
+- **Links**: [GitHub](https://github.com/baaivision/URSA) | [Paper](https://arxiv.org/abs/2510.24717) | [HuggingFace](https://huggingface.co/collections/BAAI/ursa) | [Demo](https://huggingface.co/spaces/BAAI/nova-d48w1024-osp480)
+
+```python
+# URSA models available:
+# Video generation:
+# - URSA-0.6B-FSQ320: 49 frames @ 512x320 (T2V, I2V, V2V)
+# - URSA-1.7B-FSQ320: 49 frames @ 512x320 (higher quality)
+# Image generation:
+# - URSA-1.7B-IBQ1024: 1024x1024 images (T2I)
+# Single pipeline handles all modalities
+```
 
 ---
 
