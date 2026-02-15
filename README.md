@@ -24,14 +24,16 @@ Most video generation research prioritizes quality over speed. This repo focuses
 
 | Model | Latency (5s @ 720p) | GPU | FPS | License | Status |
 |-------|---------------------|-----|-----|---------|--------|
+| [CausVid](#causvid) | **~1.3s + streaming** | H100 (80GB) | 24 | TBD | 🔬 CVPR 2025 |
 | [LTXVideo](#ltxvideo) | **~8s** | RTX A6000 (48GB) | 24 | Apache 2.0 | ✅ Production |
+| [AnimateDiff-Lightning](#animatediff-lightning) | ~10s | RTX 4090 (24GB) | 16 | Apache 2.0 | ✅ Production |
 | [FastVideo](#fastvideo) | ~12s | H100 (80GB) | 30 | Apache 2.0 | ✅ Production |
 | [Pyramidal Flow](#pyramidal-flow) | ~15s | A100 (80GB) | 24 | MIT | ✅ Production |
 | [VideoLCM](#videolcm) | ~18s | H100 (80GB) | 24 | - | 🔬 Research |
 | [SVD-XT (Turbo)](#stable-video-diffusion-turbo) | ~20s | A100 (40GB) | 25 | - | ✅ Production |
-| [AnimateDiff-Lightning](#animatediff-lightning) | ~10s | RTX 4090 (24GB) | 16 | Apache 2.0 | ✅ Production |
+| [URSA-1.7B](#ursa-uniform-discrete-diffusion) | ~20-25s (est.) | H100 (80GB) | 12 | Apache 2.0 | 🔬 ICLR 2026 |
 
-*Benchmarks measured on single GPU inference, T2V generation. Image-to-video typically 30-50% faster.*
+*Benchmarks measured on single GPU inference, T2V generation. Image-to-video typically 30-50% faster. CausVid streaming: initial latency 1.3s, then continuous frame generation.*
 
 ---
 
@@ -139,6 +141,27 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Best For**: Live video translation, real-time style transfer
 - **Deployment**: Custom CUDA kernels, requires optimization
 - **Links**: [GitHub](https://github.com/open-mmlab/Live2Diff) | [Paper](https://arxiv.org/abs/2407.08701)
+
+---
+
+#### CausVid
+**Developer**: MIT/Adobe (Tianwei Yin, Xun Huang) | **Released**: CVPR 2025  
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: **1.3 seconds initial**, then streaming frame-by-frame
+- **Hardware**: H100 (80GB) recommended
+- **Architecture**: Autoregressive diffusion with causal forcing (distilled from bidirectional models)
+- **Key Innovation**: Few-step autoregressive generation, dramatically reduces computational overhead
+- **Best For**: Real-time video generation, interactive applications
+- **Deployment**: CVPR 2025 paper, code TBD
+- **Links**: [Paper (PDF)](https://openaccess.thecvf.com/content/CVPR2025/papers/Yin_From_Slow_Bidirectional_to_Fast_Autoregressive_Video_Diffusion_Models_CVPR_2025_paper.pdf) | [Project](https://causvid.github.io/)
+
+```python
+# CausVid architecture enables:
+# 1. Initial frame generation: 1.3s
+# 2. Subsequent frames: streaming (continuous generation)
+# 3. Autoregressive + diffusion forcing for quality
+```
 
 ---
 
@@ -272,13 +295,17 @@ docker run --gpus all -p 8000:8000 fastvideo:latest
 
 ### 2026
 - **Causal Forcing** (Feb 2026): Autoregressive diffusion for real-time interactive video [[arXiv]](https://arxiv.org/abs/2602.02214)
+- **Context Forcing** (Feb 2026): Long-context autoregressive with slow-fast memory [[arXiv]](https://arxiv.org/abs/2602.06028)
 
 ### 2025
-- **FastVideo** (Feb 2025): Unified acceleration framework [[arXiv]](TBD)
+- **CausVid** (CVPR 2025): Fast autoregressive video via diffusion forcing (1.3s latency) [[Paper]](https://openaccess.thecvf.com/content/CVPR2025/papers/Yin_From_Slow_Bidirectional_to_Fast_Autoregressive_Video_Diffusion_Models_CVPR_2025_paper.pdf)
+- **URSA** (ICLR 2026, Oct 2025): Uniform discrete diffusion for unified video generation [[arXiv]](https://arxiv.org/abs/2510.24717)
+- **FastVideo** (Feb 2025): Unified acceleration framework [[GitHub]](https://github.com/hao-ai-lab/FastVideo)
 - **UltraViCo** (Oct 2025): Breaking extrapolation limits in DiTs [[arXiv]](https://arxiv.org/abs/2511.20123)
 - **Pyramidal Flow** (Oct 2024): Flow matching for efficient generation [[arXiv]](https://arxiv.org/abs/2410.XXXXX)
 
 ### 2024
+- **NOVA** (ICLR 2025, Dec 2024): Autoregressive video without vector quantization [[arXiv]](https://arxiv.org/abs/2412.14169)
 - **LTXVideo** (Oct 2024): Real-time latent diffusion [[GitHub]](https://github.com/Lightricks/LTX-Video)
 - **Live2Diff** (Jul 2024): Streaming video translation [[arXiv]](https://arxiv.org/abs/2407.08701)
 - **AnimateDiff-Lightning** (Apr 2024): Few-step animation [[arXiv]](https://arxiv.org/abs/2404.XXXXX)
@@ -323,10 +350,48 @@ docker run --gpus all -p 8000:8000 fastvideo:latest
 
 ## 🔬 Experimental / Bleeding Edge
 
+### Autoregressive Models (Production-Approaching)
+
+#### URSA (Uniform Discrete Diffusion)
+**Developer**: BAAIV (Beijing Academy of AI) | **Released**: Oct 2025  
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: Estimated 15-25s for short clips (based on architecture)
+- **Hardware**: 0.6B model on RTX 4090, 1.7B on H100
+- **Architecture**: Discrete diffusion with metric path (successor to NOVA)
+- **Key Innovation**: Unified T2V/I2V/T2I in single model, no vector quantization
+- **Best For**: Multi-task video generation, research
+- **Status**: ICLR 2026 accepted, models released
+- **Links**: [GitHub](https://github.com/baaivision/URSA) | [Paper](https://arxiv.org/abs/2510.24717) | [HuggingFace](https://huggingface.co/collections/BAAI/ursa) | [Demo](https://huggingface.co/spaces/BAAI/nova-d48w1024-osp480)
+
+```python
+# URSA models available:
+# - URSA-0.6B-FSQ320: 49 frames @ 512x320
+# - URSA-1.7B-FSQ320: 49 frames @ 512x320 (higher quality)
+# - URSA-1.7B-IBQ1024: 1024x1024 images (T2I)
+# Unified pipeline supports T2I, T2V, I2V, V2V
+```
+
+---
+
+#### NOVA
+**Developer**: BAAIV | **Released**: Dec 2024 (ICLR 2025)  
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: 20-30s estimated (non-quantized autoregressive)
+- **Hardware**: 0.6B params, runs on high-end consumer GPUs
+- **Architecture**: Autoregressive without vector quantization
+- **Key Innovation**: Frame-by-frame + set-by-set prediction, no VQ bottleneck
+- **Best For**: Research baseline, predecessor to URSA
+- **Status**: Code released, ICLR 2025 accepted
+- **Links**: [GitHub](https://github.com/baaivision/NOVA) | [Paper](https://arxiv.org/abs/2412.14169) | [Project](https://bitterdhg.github.io/NOVA_page/)
+
+---
+
 ### Not Production-Ready (Yet)
-- **NOVA** (Dec 2024): Autoregressive without VQ, promising architecture [[GitHub]](https://github.com/baaivision/NOVA)
 - **MAGI-1** (Apr 2025): Autoregressive MoE, chunk-based [[GitHub]](https://github.com/SandAI-org/Magi-1)
 - **Video-T1** (Mar 2025): Test-time scaling for quality boost [[arXiv]](https://arxiv.org/abs/2503.18942)
+- **Context Forcing** (Feb 2026): Long-context autoregressive with slow-fast memory [[arXiv]](https://arxiv.org/abs/2602.06028)
 
 ---
 
