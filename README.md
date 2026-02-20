@@ -45,8 +45,8 @@ Most video generation research prioritizes quality over speed. This repo focuses
 
 ## 🚀 Models by Category
 
-### General Video Generation
-*Standard Text-to-Video (T2V) and Image-to-Video (I2V) models focusing on scene generation.*
+### ⚡ General Real-Time Video Generation
+*Standard Text-to-Video (T2V), Image-to-Video (I2V), and Streaming models focusing on scene generation and action.*
 
 #### MonarchRT
 **Developer**: Monarch AI | **Released**: Feb 2026
@@ -55,7 +55,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Latency**: 16 FPS continuous generation
 - **Hardware**: Optimized for RTX 5090 (32GB)
 - **Architecture**: Distilled DiT with sparse attention
-- **Key Innovation**: Consumer-grade high-FPS generation
+- **Key Innovation**: "Sparse Monarch matrices replace quadratic attention."
 - **Best For**: Local real-time generation, gaming integration
 - **Deployment**: TensorRT-LLM optimized backend
 - **Links**: [GitHub](https://github.com/monarch-ai/MonarchRT) | [Paper](https://arxiv.org/abs/2602.XXXXX)
@@ -69,10 +69,37 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Latency**: 29 FPS streaming
 - **Hardware**: H100 (80GB)
 - **Architecture**: Streaming flow matching
-- **Key Innovation**: Ultra-low latency streaming pipeline
+- **Key Innovation**: "Distilled causal student."
 - **Best For**: Interactive video applications
 - **Deployment**: Server-side streaming
 - **Links**: [GitHub](https://github.com/bytedance/MotionStream) | [Paper](https://arxiv.org/abs/2511.XXXXX)
+
+---
+
+#### S2DiT
+**Developer**: Apple/Columbia | **Released**: Jan 2026
+**Speed**: ⚡⚡⚡ | **Quality**: ⭐⭐⭐
+
+- **Latency**: 10 FPS on mobile
+- **Hardware**: iPhone 17 Pro / Mobile NPUs
+- **Architecture**: Mobile-optimized DiT (Shift-2-DiT)
+- **Key Innovation**: "Sandwich architecture for mobile streaming."
+- **Best For**: Mobile apps, privacy-focused generation
+- **Deployment**: CoreML
+- **Links**: [GitHub](https://github.com/apple/ml-s2dit) | [Paper](https://arxiv.org/abs/2601.XXXXX)
+
+---
+
+#### MemFlow: Flowing Adaptive Memory
+**Developer**: University of Oxford / Meta | **Released**: Dec 2025
+**Category**: Streaming / Interactive
+**Speed**: ⚡⚡⚡⚡ (18.7 FPS on H100) | **Quality**: ⭐⭐⭐⭐
+
+- **Description**: "Streaming video generation framework for long-context consistency. Retrieves relevant historical frames dynamically to prevent forgetting."
+- **Hardware**: H100 (80GB)
+- **Key Innovation**: Dynamic memory retrieval for infinite-context streaming
+- **Best For**: Long-form video generation, interactive narratives
+- **Links**: [Paper](https://arxiv.org/abs/2512.14699) | [Project](https://sihuiji.github.io/MemFlow.github.io/)
 
 ---
 
@@ -87,20 +114,6 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Best For**: Live creative tools
 - **Deployment**: PyTorch, Diffusers
 - **Links**: [GitHub](https://github.com/nus-ai/StreamDiT) | [Paper](https://arxiv.org/abs/2507.XXXXX)
-
----
-
-#### S2DiT
-**Developer**: Apple/Columbia | **Released**: Jan 2026
-**Speed**: ⚡⚡⚡ | **Quality**: ⭐⭐⭐
-
-- **Latency**: 10 FPS on mobile
-- **Hardware**: iPhone 17 Pro / Mobile NPUs
-- **Architecture**: Mobile-optimized DiT (Shift-2-DiT)
-- **Key Innovation**: On-device real-time generation
-- **Best For**: Mobile apps, privacy-focused generation
-- **Deployment**: CoreML
-- **Links**: [GitHub](https://github.com/apple/ml-s2dit) | [Paper](https://arxiv.org/abs/2601.XXXXX)
 
 ---
 
@@ -231,7 +244,7 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ---
 
-### Avatar & Talking Head Generation
+### 🗣️ Real-Time Avatar & Talking Head
 *Specialized models for face animation, lip-sync, and full-body avatars.*
 
 #### LiveTalk
@@ -241,9 +254,11 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Latency**: **Real-time multimodal** (<100ms)
 - **Hardware**: RTX 4090
 - **Architecture**: Audio-driven latent diffusion
-- **Key Innovation**: Low-latency audio-to-video synchronization
+- **Key Innovation**: "On-policy distillation + identity sinks."
 - **Best For**: Virtual assistants, live streaming avatars
 - **Links**: [GitHub](https://github.com/tencent-ai/LiveTalk) | [Paper](https://arxiv.org/abs/2512.XXXXX)
+
+---
 
 #### VACE (Real-Time Adaptation)
 **Developer**: DayDream Live | **Released**: Feb 2026
@@ -257,6 +272,8 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Best For**: Adapting VACE for streaming/interactive applications
 - **Links**: [GitHub](https://github.com/daydreamlive/scope) | [Paper](https://arxiv.org/abs/2602.14381)
 
+---
+
 #### SoulX
 **Developer**: Soul Machines | **Released**: Jan 2026
 **Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
@@ -267,22 +284,6 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Key Innovation**: Hyper-realistic emotional expression
 - **Best For**: Enterprise customer service avatars
 - **Links**: [Website](https://www.soulmachines.com)
-
----
-
-### Control Adapters & Frameworks
-
-#### MemFlow: Flowing Adaptive Memory
-**Developer**: University of Oxford / Meta | **Released**: Dec 2025
-**Type**: Optimization Framework / Module
-**Paper**: arXiv:2512.14699
-
-- **Speed Impact**: **7.9% reduction** vs memory-free baseline (highly efficient)
-- **Mechanism**: Dynamic memory retrieval for long-context consistency
-- **Key Stats**: Negligible latency burden, keeps compatibility with any streaming video generation model with KV cache.
-- **Description**: "Retrieves relevant historical frames for each new chunk to maintain narrative consistency in long videos."
-- **Best For**: Long-form video generation, streaming narratives
-- **Links**: [Paper](https://arxiv.org/abs/2512.14699)
 
 ---
 
@@ -341,7 +342,7 @@ Quality ▲
 
 | GPU | $/hr (Cloud) | Throughput (clips/hr) | Cost per clip | Best Use Case |
 |-----|--------------|----------------------|---------------|---------------|
-| RTX 5090 | $? (Local) | 400 (MonarchRT) | $0 (capex) | Ultimate Local RT |
+| RTX 5090 | ~$0.50 (est) | ~960 (MonarchRT) | $0.0005 | Ultimate Local RT |
 | RTX A6000 | $1.50 | 300 (LTXVideo) | $0.005 | High-volume, fast |
 | A100 (40GB) | $2.50 | 180 (Pyramidal) | $0.014 | Balanced |
 | H100 (80GB) | $4.50 | 250 (FastVideo) | $0.018 | Quality priority |
