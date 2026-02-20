@@ -66,7 +66,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Key Innovation**: "Sparse Monarch matrices replace quadratic attention."
 - **Best For**: Local real-time generation, gaming integration
 - **Deployment**: TensorRT-LLM optimized backend
-- **Links**: [GitHub](https://github.com/monarch-ai/MonarchRT) | [Paper](https://arxiv.org/abs/2602.XXXXX)
+- **Links**: [Code coming soon] | [Paper coming soon]
 
 ---
 
@@ -80,7 +80,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Key Innovation**: "Distilled causal student."
 - **Best For**: Interactive video applications
 - **Deployment**: Server-side streaming
-- **Links**: [GitHub](https://github.com/bytedance/MotionStream) | [Paper](https://arxiv.org/abs/2511.XXXXX)
+- **Links**: [GitHub](https://github.com/alex4727/MotionStream) | [Paper](https://arxiv.org/abs/2511.01266)
 
 ---
 
@@ -94,7 +94,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Key Innovation**: "Sandwich architecture for mobile streaming."
 - **Best For**: Mobile apps, privacy-focused generation
 - **Deployment**: CoreML
-- **Links**: [GitHub](https://github.com/apple/ml-s2dit) | [Paper](https://arxiv.org/abs/2601.XXXXX)
+- **Links**: [Code coming soon] | [Paper coming soon]
 
 ---
 
@@ -121,7 +121,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Key Innovation**: Efficient caching for continuous generation
 - **Best For**: Live creative tools
 - **Deployment**: PyTorch, Diffusers
-- **Links**: [GitHub](https://github.com/nus-ai/StreamDiT) | [Paper](https://arxiv.org/abs/2507.XXXXX)
+- **Links**: [Project Page](https://cumulo-autumn.github.io/StreamDiT/) | [Paper](https://arxiv.org/abs/2507.03745)
 
 ---
 
@@ -236,7 +236,7 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Key Innovation**: Few-step autoregressive generation, dramatically reduces computational overhead
 - **Best For**: Real-time video generation, interactive applications
 - **Deployment**: CVPR 2025 paper, code TBD
-- **Links**: [Paper (PDF)](https://openaccess.thecvf.com/content/CVPR2025/papers/Yin_From_Slow_Bidirectional_to_Fast_Autoregressive_Video_Diffusion_Models_CVPR_2025_paper.pdf) | [Project](https://causvid.github.io/)
+- **Links**: [GitHub](https://github.com/tianweiy/CausVid) | [Paper](https://arxiv.org/abs/2412.07772) | [Project](https://causvid.github.io/)
 
 ---
 
@@ -266,7 +266,7 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Architecture**: Audio-driven latent diffusion
 - **Key Innovation**: "On-policy distillation + identity sinks."
 - **Best For**: Virtual assistants, live streaming avatars
-- **Links**: [GitHub](https://github.com/tencent-ai/LiveTalk) | [Paper](https://arxiv.org/abs/2512.XXXXX)
+- **Links**: [Code coming soon] | [Paper coming soon]
 
 ---
 
@@ -555,7 +555,7 @@ We welcome contributions! Please:
 ### Blogs & Tutorials
 - [Modal: Text-to-Video Models Comparison](https://modal.com/blog/text-to-video-ai-article)
 - [HuggingFace: Video Diffusion State](https://huggingface.co/blog/video_gen)
-- [Replicate: Video Generation Guide](https://replicate.com/blog/video-generation)
+- [Replicate: Video Generation Guide](https://replicate.com/blog)
 
 ### Community
 - [r/StableDiffusion](https://reddit.com/r/StableDiffusion) — Video generation threads
