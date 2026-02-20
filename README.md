@@ -22,24 +22,32 @@ Most video generation research prioritizes quality over speed. This repo focuses
 
 ## 📊 Real-Time Model Leaderboard
 
-| Model | Latency (5s @ 720p) | GPU | FPS | License | Status |
-|-------|---------------------|-----|-----|---------|--------|
-| [MonarchRT](#monarchrt) | **~5s** | RTX 5090 (32GB) | 16 | Apache 2.0 | ✅ Production |
-| [MotionStream](#motionstream) | **~5s (Streaming)** | H100 | 29 | MIT | ✅ Production |
-| [StreamDiT](#streamdit) | **~5s (Streaming)** | RTX 4090 | 16 | Apache 2.0 | ✅ Production |
-| [S2DiT](#s2dit) | **~5s** | iPhone 17 Pro | 10 | Mobile | 🔬 Research |
-| [CausVid](#causvid) | **~1.3s + streaming** | H100 (80GB) | 24 | TBD | 🔬 CVPR 2025 |
-| [LTXVideo](#ltxvideo) | **~8s** | RTX A6000 (48GB) | 24 | Apache 2.0 | ✅ Production |
-| [AnimateDiff-Lightning](#animatediff-lightning) | ~10s | RTX 4090 (24GB) | 16 | Apache 2.0 | ✅ Production |
-| [FastVideo](#fastvideo) | ~12s | H100 (80GB) | 30 | Apache 2.0 | ✅ Production |
-| [Pyramidal Flow](#pyramidal-flow) | ~15s | A100 (80GB) | 24 | MIT | ✅ Production |
-| [VideoLCM](#videolcm) | ~18s | H100 (80GB) | 24 | - | 🔬 Research |
-| [SVD-XT (Turbo)](#stable-video-diffusion-turbo) | ~20s | A100 (40GB) | 25 | - | ✅ Production |
-| [URSA-1.7B](#ursa-uniform-discrete-diffusion) † | ~20-25s (est.) | H100 (80GB) | 12 | Apache 2.0 | 🔬 ICLR 2026 |
+### 🌊 True Streaming / Real-Time
+*Models that generate and display frames continuously as they are computed.*
 
-*† Multi-modal model (also generates images). See [Multi-Modal Models](#multi-modal-models-video--image-generation) section.*
+| Model | TTFF (Time to First Frame) | FPS (Throughput) | Hardware | Status |
+|-------|----------------------------|------------------|----------|--------|
+| [MotionStream](#motionstream) | **<200ms** | 29 | H100 | ✅ Production |
+| [MonarchRT](#monarchrt) | **<300ms** | 16 | RTX 5090 (32GB) | ✅ Production |
+| [LiveTalk](#livetalk) | **<100ms** | 30+ | RTX 4090 | ✅ Production |
+| [MemFlow](#memflow) | **<500ms** | 18.7 | H100 (80GB) | 🔬 Research |
+| [StreamDiT](#streamdit) | **<400ms** | 16 | RTX 4090 | ✅ Production |
+| [S2DiT](#s2dit) | **<1s** | 10 | iPhone 17 Pro | 🔬 Research |
+| [CausVid](#causvid) | **1.3s** | 24 | H100 (80GB) | 🔬 CVPR 2025 |
 
-*Benchmarks measured on single GPU inference, T2V generation. Image-to-video typically 30-50% faster. CausVid streaming: initial latency 1.3s, then continuous frame generation.*
+### 📦 Fast Batch / Near Real-Time
+*Models that generate entire clips or chunks at once with low latency.*
+
+| Model | Latency (per 5s clip) | FPS (Effective) | Hardware | Status |
+|-------|-----------------------|-----------------|----------|--------|
+| [LTXVideo](#ltxvideo) | **~8s** | 24 | RTX A6000 (48GB) | ✅ Production |
+| [AnimateDiff-Lightning](#animatediff-lightning) | ~10s | 16 | RTX 4090 (24GB) | ✅ Production |
+| [FastVideo](#fastvideo) | ~12s | 30 | H100 (80GB) | ✅ Production |
+| [Pyramidal Flow](#pyramidal-flow) | ~15s | 24 | A100 (80GB) | ✅ Production |
+| [VideoLCM](#videolcm) | ~18s | 24 | H100 (80GB) | 🔬 Research |
+| [SVD-XT (Turbo)](#stable-video-diffusion-turbo) | ~20s | 25 | A100 (40GB) | ✅ Production |
+
+*Benchmarks measured on single GPU inference, T2V generation. Image-to-video typically 30-50% faster.*
 
 ---
 
@@ -120,6 +128,8 @@ Most video generation research prioritizes quality over speed. This repo focuses
 #### LTXVideo
 **Developer**: Lightricks | **Released**: Oct 2024  
 **Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐
+
+❤️ **Maintainer's Pick**: We love this model because it produces excellent quality videos with surprisingly small amounts of compute (runs on consumer hardware).
 
 - **Latency**: 8-12s for 5s clips @ 768x512, 24fps
 - **Hardware**: Runs on RTX A6000 (48GB) / 4090 (24GB with optimizations)
