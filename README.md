@@ -181,16 +181,18 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ---
 
-#### VACE (Real-Time Autoregressive)
-**Developer**: DayDream Live | **Released**: Feb 2026
-**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+### Control Mechanisms & Adaptations
 
-- **Latency**: Streaming control with 20-30% overhead
-- **Hardware**: Consumer/Datacenter GPUs (implied by "real-time" context)
-- **Architecture**: VACE adapted for autoregressive generation
-- **Key Innovation**: Enables streaming control with manageable latency overhead
-- **Best For**: Streaming video applications requiring fine-grained control
-- **Deployment**: Reference implementation available
+#### VACE (Real-Time Adaptation)
+**Developer**: DayDream Live | **Released**: Feb 2026
+**Type**: Control Framework / Wrapper
+**Base Model**: VACE (Pretrained)
+
+- **Nature**: **Technique applied to VACE**, not a standalone model
+- **Mechanism**: Moves reference frames to parallel conditioning pathway
+- **Latency**: Adds 20-30% overhead for streaming control
+- **Key Innovation**: Enables real-time autoregressive control on existing weights
+- **Best For**: Adapting VACE for streaming/interactive applications
 - **Links**: [GitHub](https://github.com/daydreamlive/scope) | [Paper](https://arxiv.org/abs/2602.14381)
 
 ---
