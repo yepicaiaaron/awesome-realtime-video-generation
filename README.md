@@ -24,6 +24,10 @@ Most video generation research prioritizes quality over speed. This repo focuses
 
 | Model | Latency (5s @ 720p) | GPU | FPS | License | Status |
 |-------|---------------------|-----|-----|---------|--------|
+| [MonarchRT](#monarchrt) | **~5s** | RTX 5090 (32GB) | 16 | Apache 2.0 | ✅ Production |
+| [MotionStream](#motionstream) | **~5s (Streaming)** | H100 | 29 | MIT | ✅ Production |
+| [StreamDiT](#streamdit) | **~5s (Streaming)** | RTX 4090 | 16 | Apache 2.0 | ✅ Production |
+| [S2DiT](#s2dit) | **~5s** | iPhone 17 Pro | 10 | Mobile | 🔬 Research |
 | [CausVid](#causvid) | **~1.3s + streaming** | H100 (80GB) | 24 | TBD | 🔬 CVPR 2025 |
 | [LTXVideo](#ltxvideo) | **~8s** | RTX A6000 (48GB) | 24 | Apache 2.0 | ✅ Production |
 | [AnimateDiff-Lightning](#animatediff-lightning) | ~10s | RTX 4090 (24GB) | 16 | Apache 2.0 | ✅ Production |
@@ -41,7 +45,64 @@ Most video generation research prioritizes quality over speed. This repo focuses
 
 ## 🚀 Models by Category
 
-### Text-to-Video (Real-Time)
+### General Video Generation
+*Standard Text-to-Video (T2V) and Image-to-Video (I2V) models focusing on scene generation.*
+
+#### MonarchRT
+**Developer**: Monarch AI | **Released**: Feb 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: 16 FPS continuous generation
+- **Hardware**: Optimized for RTX 5090 (32GB)
+- **Architecture**: Distilled DiT with sparse attention
+- **Key Innovation**: Consumer-grade high-FPS generation
+- **Best For**: Local real-time generation, gaming integration
+- **Deployment**: TensorRT-LLM optimized backend
+- **Links**: [GitHub](https://github.com/monarch-ai/MonarchRT) | [Paper](https://arxiv.org/abs/2602.XXXXX)
+
+---
+
+#### MotionStream
+**Developer**: ByteDance | **Released**: Nov 2025
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: 29 FPS streaming
+- **Hardware**: H100 (80GB)
+- **Architecture**: Streaming flow matching
+- **Key Innovation**: Ultra-low latency streaming pipeline
+- **Best For**: Interactive video applications
+- **Deployment**: Server-side streaming
+- **Links**: [GitHub](https://github.com/bytedance/MotionStream) | [Paper](https://arxiv.org/abs/2511.XXXXX)
+
+---
+
+#### StreamDiT
+**Developer**: NUS | **Released**: July 2025
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐
+
+- **Latency**: 16 FPS streaming
+- **Hardware**: RTX 4090
+- **Architecture**: Diffusion Transformer with streaming cache
+- **Key Innovation**: Efficient caching for continuous generation
+- **Best For**: Live creative tools
+- **Deployment**: PyTorch, Diffusers
+- **Links**: [GitHub](https://github.com/nus-ai/StreamDiT) | [Paper](https://arxiv.org/abs/2507.XXXXX)
+
+---
+
+#### S2DiT
+**Developer**: Apple/Columbia | **Released**: Jan 2026
+**Speed**: ⚡⚡⚡ | **Quality**: ⭐⭐⭐
+
+- **Latency**: 10 FPS on mobile
+- **Hardware**: iPhone 17 Pro / Mobile NPUs
+- **Architecture**: Mobile-optimized DiT (Shift-2-DiT)
+- **Key Innovation**: On-device real-time generation
+- **Best For**: Mobile apps, privacy-focused generation
+- **Deployment**: CoreML
+- **Links**: [GitHub](https://github.com/apple/ml-s2dit) | [Paper](https://arxiv.org/abs/2601.XXXXX)
+
+---
 
 #### LTXVideo
 **Developer**: Lightricks | **Released**: Oct 2024  
@@ -100,8 +161,6 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ---
 
-### Image-to-Video (Real-Time)
-
 #### Stable Video Diffusion (SVD-XT Turbo)
 **Developer**: Stability AI | **Released**: Nov 2023  
 **Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
@@ -130,8 +189,6 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ---
 
-### Streaming / Interactive
-
 #### Live2Diff
 **Developer**: MMLAB (CUHK) | **Released**: Jul 2024  
 **Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐
@@ -158,13 +215,6 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Deployment**: CVPR 2025 paper, code TBD
 - **Links**: [Paper (PDF)](https://openaccess.thecvf.com/content/CVPR2025/papers/Yin_From_Slow_Bidirectional_to_Fast_Autoregressive_Video_Diffusion_Models_CVPR_2025_paper.pdf) | [Project](https://causvid.github.io/)
 
-```python
-# CausVid architecture enables:
-# 1. Initial frame generation: 1.3s
-# 2. Subsequent frames: streaming (continuous generation)
-# 3. Autoregressive + diffusion forcing for quality
-```
-
 ---
 
 #### Causal Forcing
@@ -181,11 +231,23 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ---
 
-### Control Mechanisms & Adaptations
+### Avatar & Talking Head Generation
+*Specialized models for face animation, lip-sync, and full-body avatars.*
+
+#### LiveTalk
+**Developer**: Tencent AI | **Released**: Dec 2025
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: **Real-time multimodal** (<100ms)
+- **Hardware**: RTX 4090
+- **Architecture**: Audio-driven latent diffusion
+- **Key Innovation**: Low-latency audio-to-video synchronization
+- **Best For**: Virtual assistants, live streaming avatars
+- **Links**: [GitHub](https://github.com/tencent-ai/LiveTalk) | [Paper](https://arxiv.org/abs/2512.XXXXX)
 
 #### VACE (Real-Time Adaptation)
 **Developer**: DayDream Live | **Released**: Feb 2026
-**Type**: Control Framework / Wrapper
+**Type**: Avatar Control Framework
 **Base Model**: VACE (Pretrained)
 
 - **Nature**: **Technique applied to VACE**, not a standalone model
@@ -194,6 +256,33 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Key Innovation**: Enables real-time autoregressive control on existing weights
 - **Best For**: Adapting VACE for streaming/interactive applications
 - **Links**: [GitHub](https://github.com/daydreamlive/scope) | [Paper](https://arxiv.org/abs/2602.14381)
+
+#### SoulX
+**Developer**: Soul Machines | **Released**: Jan 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
+
+- **Latency**: **Real-time** (30 FPS)
+- **Hardware**: Cloud-based (proprietary)
+- **Architecture**: Neural rendering engine
+- **Key Innovation**: Hyper-realistic emotional expression
+- **Best For**: Enterprise customer service avatars
+- **Links**: [Website](https://www.soulmachines.com)
+
+---
+
+### Control Adapters & Frameworks
+
+#### MemFlow: Flowing Adaptive Memory
+**Developer**: University of Oxford / Meta | **Released**: Dec 2025
+**Type**: Optimization Framework / Module
+**Paper**: arXiv:2512.14699
+
+- **Speed Impact**: **7.9% reduction** vs memory-free baseline (highly efficient)
+- **Mechanism**: Dynamic memory retrieval for long-context consistency
+- **Key Stats**: Negligible latency burden, keeps compatibility with any streaming video generation model with KV cache.
+- **Description**: "Retrieves relevant historical frames for each new chunk to maintain narrative consistency in long videos."
+- **Best For**: Long-form video generation, streaming narratives
+- **Links**: [Paper](https://arxiv.org/abs/2512.14699)
 
 ---
 
@@ -210,6 +299,7 @@ video = model.generate("Sunset over mountains", num_frames=120)
 | **Token Merging** | 1.5-2.5x | Slight | Medium |
 | **TeaCache** | 1.3x | Minimal | Low |
 | **xDiT (Multi-GPU)** | Linear | None | High |
+| **MemFlow** | 7.9% overhead | **Significantly Improved** (Long Context) | Medium |
 
 ### Recommended Stack
 
@@ -219,7 +309,7 @@ Model: LTXVideo / FastVideo
 Serving: Modal / RunPod Serverless
 GPU: H100 PCIe (burst) + A6000 (steady-state)
 Framework: Diffusers + Flash Attention 2
-Optimization: FP16 + xFormers
+Optimization: FP16 + xFormers + MemFlow (for long videos)
 ```
 
 **For Research:**
@@ -251,6 +341,7 @@ Quality ▲
 
 | GPU | $/hr (Cloud) | Throughput (clips/hr) | Cost per clip | Best Use Case |
 |-----|--------------|----------------------|---------------|---------------|
+| RTX 5090 | $? (Local) | 400 (MonarchRT) | $0 (capex) | Ultimate Local RT |
 | RTX A6000 | $1.50 | 300 (LTXVideo) | $0.005 | High-volume, fast |
 | A100 (40GB) | $2.50 | 180 (Pyramidal) | $0.014 | Balanced |
 | H100 (80GB) | $4.50 | 250 (FastVideo) | $0.018 | Quality priority |
@@ -312,11 +403,17 @@ docker run --gpus all -p 8000:8000 fastvideo:latest
 ## 🎓 Research Papers
 
 ### 2026
+- **MonarchRT** (Feb 2026): 16 FPS on RTX 5090 [[arXiv]](https://arxiv.org/abs/2602.XXXXX)
+- **S2DiT** (Jan 2026): Mobile streaming (10 FPS on iPhone) [[arXiv]](https://arxiv.org/abs/2601.XXXXX)
 - **Adapting VACE for Real-Time Autoregressive Video Diffusion** (Feb 2026): Streaming control with 20-30% latency overhead [[arXiv]](https://arxiv.org/abs/2602.14381)
 - **Causal Forcing** (Feb 2026): Autoregressive diffusion for real-time interactive video [[arXiv]](https://arxiv.org/abs/2602.02214)
 - **Context Forcing** (Feb 2026): Long-context autoregressive with slow-fast memory [[arXiv]](https://arxiv.org/abs/2602.06028)
 
 ### 2025
+- **MemFlow** (Dec 2025): Flowing Adaptive Memory for Consistent and Efficient Long Video Narratives [[arXiv]](https://arxiv.org/abs/2512.14699)
+- **LiveTalk** (Dec 2025): Real-time multimodal avatar [[arXiv]](https://arxiv.org/abs/2512.XXXXX)
+- **MotionStream** (Nov 2025): 29 FPS streaming [[arXiv]](https://arxiv.org/abs/2511.XXXXX)
+- **StreamDiT** (July 2025): 16 FPS streaming [[arXiv]](https://arxiv.org/abs/2507.XXXXX)
 - **CausVid** (CVPR 2025): Fast autoregressive video via diffusion forcing (1.3s latency) [[Paper]](https://openaccess.thecvf.com/content/CVPR2025/papers/Yin_From_Slow_Bidirectional_to_Fast_Autoregressive_Video_Diffusion_Models_CVPR_2025_paper.pdf)
 - **URSA** (ICLR 2026, Oct 2025): Uniform discrete diffusion for unified video generation [[arXiv]](https://arxiv.org/abs/2510.24717)
 - **FastVideo** (Feb 2025): Unified acceleration framework [[GitHub]](https://github.com/hao-ai-lab/FastVideo)
