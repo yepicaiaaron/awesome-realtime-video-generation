@@ -125,7 +125,43 @@ Most video generation research prioritizes quality over speed. This repo focuses
 
 ---
 
-#### LTXVideo
+#### LTXVideo 2.0 (LTX-2)
+**Developer**: Lightricks | **Released**: Feb 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+❤️ **Maintainer's Pick**: The successor to LTXVideo adds native audio synchronization and higher resolution (up to 4K) while maintaining blistering speed.
+
+- **Latency**: 6-10s for short clips @ 1080p, 25fps (Fast mode)
+- **Hardware**: Runs on RTX 4090 (24GB), improved efficiency
+- **Key Innovation**: Unified audio-video latent space, "Fast" and "Pro" modes
+- **Best For**: Complete AV production, music videos, real-time previews
+- **Deployment**: ComfyUI (official nodes), HuggingFace weights available
+- **Links**: [HuggingFace](https://huggingface.co/Lightricks/LTX-Video-2) | [Demo](https://maxvideoai.com/models/ltx-2)
+
+#### Seedance 2.0
+**Developer**: ByteDance (Niobotics) | **Released**: Feb 2026
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: 8-10s for draft generation
+- **Hardware**: Cloud-based (proprietary currently)
+- **Key Innovation**: Extremely stable human motion, "beginner-friendly" control
+- **Best For**: Character animation, viral content creation
+- **Status**: Closed beta / Web platform
+- **Links**: [Website](https://seedance2ai.online)
+
+#### Kling 3.0
+**Developer**: Kuaishou | **Released**: Feb 2026
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
+
+- **Latency**: ~10s for drafts (fastest in class for high-fidelity)
+- **Hardware**: Cloud API
+- **Key Innovation**: Native 1080p generation with synchronized audio
+- **Best For**: High-fidelity commercial work requiring speed
+- **Links**: [Kling AI](https://klingai.com)
+
+---
+
+#### LTXVideo (v1)
 **Developer**: Lightricks | **Released**: Oct 2024  
 **Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐
 
