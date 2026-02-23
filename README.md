@@ -138,28 +138,6 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Deployment**: ComfyUI (official nodes), HuggingFace weights available
 - **Links**: [HuggingFace](https://huggingface.co/Lightricks/LTX-Video-2) | [Demo](https://maxvideoai.com/models/ltx-2)
 
-#### Seedance 2.0
-**Developer**: ByteDance (Niobotics) | **Released**: Feb 2026
-**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
-
-- **Latency**: 8-10s for draft generation
-- **Hardware**: Cloud-based (proprietary currently)
-- **Key Innovation**: Extremely stable human motion, "beginner-friendly" control
-- **Best For**: Character animation, viral content creation
-- **Status**: Closed beta / Web platform
-- **Links**: [Website](https://seedance2ai.online)
-
-#### Kling 3.0
-**Developer**: Kuaishou | **Released**: Feb 2026
-**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
-
-- **Latency**: ~10s for drafts (fastest in class for high-fidelity)
-- **Hardware**: Cloud API
-- **Key Innovation**: Native 1080p generation with synchronized audio
-- **Best For**: High-fidelity commercial work requiring speed
-- **Links**: [Kling AI](https://klingai.com)
-
----
 
 #### LTXVideo (v1)
 **Developer**: Lightricks | **Released**: Oct 2024  
@@ -317,19 +295,6 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Key Innovation**: Enables real-time autoregressive control on existing weights
 - **Best For**: Adapting VACE for streaming/interactive applications
 - **Links**: [GitHub](https://github.com/daydreamlive/scope) | [Paper](https://arxiv.org/abs/2602.14381)
-
----
-
-#### SoulX
-**Developer**: Soul Machines | **Released**: Jan 2026
-**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
-
-- **Latency**: **Real-time** (30 FPS)
-- **Hardware**: Cloud-based (proprietary)
-- **Architecture**: Neural rendering engine
-- **Key Innovation**: Hyper-realistic emotional expression
-- **Best For**: Enterprise customer service avatars
-- **Links**: [Website](https://www.soulmachines.com)
 
 ---
 
