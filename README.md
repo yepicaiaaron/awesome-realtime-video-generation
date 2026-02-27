@@ -271,6 +271,48 @@ video = model.generate("Sunset over mountains", num_frames=120)
 ### 🗣️ Real-Time Avatar & Talking Head
 *Specialized models for face animation, lip-sync, and full-body avatars.*
 
+#### FasterLivePortrait (KlingAI / KwaiVGI)
+**Developer**: KwaiVGI & Community | **Released**: Late 2024 / 2025
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: True Real-Time (TensorRT optimized)
+- **Hardware**: Mid-to-high end consumer GPUs
+- **Architecture**: Latent keypoint-based animation
+- **Key Innovation**: Extreme inference optimization via TensorRT for an already efficient base model.
+- **Best For**: Real-time video agents, virtual streamers.
+- **Deployment**: ComfyUI (`ComfyUI-AdvancedLivePortrait`), C++ implementations, Gradio.
+- **Links**: [GitHub (Original)](https://github.com/KwaiVGI/LivePortrait) | [TensorRT Implementation](https://github.com/StartHua/FasterLivePortrait)
+
+---
+
+#### Ditto
+**Developer**: Ant Group | **Released**: Late 2024 / 2025
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: True Real-Time (sub-second streaming)
+- **Hardware**: High-end consumer GPUs (RTX 4090/3090)
+- **Architecture**: Streaming-native pipeline
+- **Key Innovation**: Dedicated online pipeline (`stream_pipeline_online.py`) with TensorRT integration.
+- **Best For**: Low-latency conversational agents.
+- **Deployment**: TensorRT and streaming configurations available on GitHub.
+- **Links**: [GitHub](https://github.com/antgroup/ditto)
+
+---
+
+#### MuseTalk
+**Developer**: Tencent | **Released**: 2024
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: 30fps+ (Real-Time)
+- **Hardware**: RTX 3090+
+- **Architecture**: Audio-driven lip-syncing
+- **Key Innovation**: Applies highly accurate lip-sync to pre-existing base face videos in real-time.
+- **Best For**: Adding speech to static/looping avatars dynamically.
+- **Deployment**: Highly modular, often integrated into larger agent pipelines.
+- **Links**: [GitHub](https://github.com/Tencent/MuseTalk)
+
+---
+
 #### LiveTalk
 **Developer**: Tencent AI | **Released**: Dec 2025
 **Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
