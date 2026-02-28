@@ -35,6 +35,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 | [S2DiT](#s2dit) | **<1s** | 10 | iPhone 17 Pro | 🔬 Research |
 | [CausVid](#causvid) | **1.3s** | 24 | H100 (80GB) | 🔬 CVPR 2025 |
 | [EchoTorrent](#echotorrent) | **Streaming** | - | - | 🔬 Research |
+| [StreamDiffusionV2](#streamdiffusionv2) | **<500ms** | 20+ | RTX 4090 | ✅ Production |
 
 
 ### 📦 Fast Batch / Near Real-Time
@@ -124,6 +125,21 @@ Most video generation research prioritizes quality over speed. This repo focuses
 - **Best For**: Live creative tools
 - **Deployment**: PyTorch, Diffusers
 - **Links**: [Project Page](https://cumulo-autumn.github.io/StreamDiT/) | [Paper](https://arxiv.org/abs/2507.03745)
+
+
+---
+
+#### StreamDiffusionV2
+**Developer**: UC Berkeley / Stanford / NVIDIA | **Released**: Nov 2025
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: **<500ms** time-to-first-frame, continuous streaming at 20+ FPS
+- **Hardware**: RTX 4090 (24GB), multi-GPU serving supported
+- **Architecture**: Training-free pipeline for video diffusion with streaming optimizations
+- **Key Innovation**: "Pipeline-level solution for interactive live streaming" — addresses strict SLOs for time-to-first-frame and per-frame deadlines with low jitter
+- **Best For**: Live streaming applications, interactive video generation, multi-GPU deployments
+- **Deployment**: Production-ready with scalable multi-GPU serving
+- **Links**: [GitHub](https://github.com/chenfengxu714/StreamDiffusionV2) | [Paper](https://arxiv.org/abs/2511.07399)
 
 ---
 
@@ -497,6 +513,7 @@ docker run --gpus all -p 8000:8000 fastvideo:latest
 ### 2025
 - **MemFlow** (Dec 2025): Flowing Adaptive Memory for Consistent and Efficient Long Video Narratives [[arXiv]](https://arxiv.org/abs/2512.14699)
 - **LiveTalk** (Dec 2025): Real-time multimodal avatar [[arXiv]](https://arxiv.org/abs/2512.XXXXX)
+- **StreamDiffusionV2** (Nov 2025): Training-free pipeline for interactive live streaming with video diffusion [[arXiv]](https://arxiv.org/abs/2511.07399) [[GitHub]](https://github.com/chenfengxu714/StreamDiffusionV2)
 - **MotionStream** (Nov 2025): 29 FPS streaming [[arXiv]](https://arxiv.org/abs/2511.XXXXX)
 - **StreamDiT** (July 2025): 16 FPS streaming [[arXiv]](https://arxiv.org/abs/2507.XXXXX)
 - **CausVid** (CVPR 2025): Fast autoregressive video via diffusion forcing (1.3s latency) [[Paper]](https://openaccess.thecvf.com/content/CVPR2025/papers/Yin_From_Slow_Bidirectional_to_Fast_Autoregressive_Video_Diffusion_Models_CVPR_2025_paper.pdf)
