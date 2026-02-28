@@ -270,6 +270,20 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ---
 
+#### Dummy Forcing
+**Developer**: Tsinghua/Research | **Released**: Jan 2026  
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: **24.3 FPS** (2.0x speedup over baseline)
+- **Hardware**: H100 (80GB) recommended
+- **Architecture**: Autoregressive video diffusion with heterogeneous memory allocation
+- **Key Innovation**: "Dummy" heads attend only to current frame; discarding their KV caches reduces memory with minimal quality loss (~0.5%)
+- **Best For**: High-throughput real-time generation, cache-constrained deployments
+- **Deployment**: Research code available, no training required
+- **Links**: [Paper](https://arxiv.org/abs/2601.20499) | [Project](https://csguoh.github.io/project/DummyForcing/)
+
+---
+
 ### 🗣️ Real-Time Avatar & Talking Head
 *Specialized models for face animation, lip-sync, and full-body avatars.*
 
@@ -477,6 +491,7 @@ docker run --gpus all -p 8000:8000 fastvideo:latest
 - **S2DiT** (Jan 2026): Mobile streaming (10 FPS on iPhone) [[arXiv]](https://arxiv.org/abs/2601.XXXXX)
 - **Adapting VACE for Real-Time Autoregressive Video Diffusion** (Feb 2026): Streaming control with 20-30% latency overhead [[arXiv]](https://arxiv.org/abs/2602.14381)
 - **Causal Forcing** (Feb 2026): Autoregressive diffusion for real-time interactive video [[arXiv]](https://arxiv.org/abs/2602.02214)
+- **Dummy Forcing** (Jan 2026): 24.3 FPS autoregressive generation with heterogeneous memory allocation [[arXiv]](https://arxiv.org/abs/2601.20499)
 - **Context Forcing** (Feb 2026): Long-context autoregressive with slow-fast memory [[arXiv]](https://arxiv.org/abs/2602.06028)
 
 ### 2025
