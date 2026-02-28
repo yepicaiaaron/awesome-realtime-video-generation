@@ -34,6 +34,8 @@ Most video generation research prioritizes quality over speed. This repo focuses
 | [StreamDiT](#streamdit) | **<400ms** | 16 | RTX 4090 | ✅ Production |
 | [S2DiT](#s2dit) | **<1s** | 10 | iPhone 17 Pro | 🔬 Research |
 | [CausVid](#causvid) | **1.3s** | 24 | H100 (80GB) | 🔬 CVPR 2025 |
+| [EchoTorrent](#echotorrent) | **Streaming** | - | - | 🔬 Research |
+
 
 ### 📦 Fast Batch / Near Real-Time
 *Models that generate entire clips or chunks at once with low latency.*
@@ -270,6 +272,20 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ### 🗣️ Real-Time Avatar & Talking Head
 *Specialized models for face animation, lip-sync, and full-body avatars.*
+
+#### EchoTorrent
+**Developer**: Research Community | **Released**: Feb 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: True Real-Time (streaming)
+- **Hardware**: Unknown
+- **Architecture**: Streaming multi-modal video generation
+- **Key Innovation**: Sustains high-quality video generation natively in a streaming format for less buffering and faster TTFF.
+- **Best For**: Talking avatars, real-time conversational agents.
+- **Links**: [Paper](https://arxiv.org/abs/2602.XXXXX) (Link TBD)
+
+---
+
 
 #### FasterLivePortrait (KlingAI / KwaiVGI)
 **Developer**: KwaiVGI & Community | **Released**: Late 2024 / 2025
