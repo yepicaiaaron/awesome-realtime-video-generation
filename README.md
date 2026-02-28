@@ -282,7 +282,7 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Architecture**: Streaming multi-modal video generation
 - **Key Innovation**: Sustains high-quality video generation natively in a streaming format for less buffering and faster TTFF.
 - **Best For**: Talking avatars, real-time conversational agents.
-- **Links**: [Paper](https://arxiv.org/abs/2602.XXXXX) (Link TBD)
+- **Links**: [Paper](https://arxiv.org/abs/2602.13669)
 
 ---
 
