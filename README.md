@@ -28,7 +28,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 | Model | TTFF (Time to First Frame) | FPS (Throughput) | Hardware | Status |
 |-------|----------------------------|------------------|----------|--------|
 | [MotionStream](#motionstream) | **<200ms** | 29 | H100 | ✅ Production |
-| [MonarchRT](#monarchrt) | **<300ms** | 16 | RTX 5090 (32GB) | ✅ Production |
+| [MonarchRT](#monarchrt) | **<300ms** | 16 | RTX 5090 (32GB) | 🔬 Research |
 | [LiveTalk](#livetalk) | **<100ms** | 30+ | RTX 4090 | ✅ Production |
 | [MemFlow](#memflow) | **<500ms** | 18.7 | H100 (80GB) | 🔬 Research |
 | [StreamDiT](#streamdit) | **<400ms** | 16 | RTX 4090 | ✅ Production |
@@ -300,8 +300,50 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 ---
 
+
 ### 🗣️ Real-Time Avatar & Talking Head
 *Specialized models for face animation, lip-sync, and full-body avatars.*
+
+#### TempoSyncDiff
+**Developer**: VECC / DAE | **Released**: March 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: Few-step distilled diffusion inference
+- **Hardware**: High-end consumer GPUs (RTX 4090/3090)
+- **Architecture**: Distilled latent diffusion for talking heads
+- **Key Innovation**: Reduces denoising steps while maintaining temporal coherence via identity anchoring and viseme conditioning.
+- **Best For**: Low-latency audio-driven talking head generation.
+- **Status**: Code published, model weights currently withheld.
+- **Links**: [GitHub](https://github.com/MazumdarSoumya/TempoSyncDiff) | [Paper](https://arxiv.org/abs/2603.06057) | [Project](https://mazumdarsoumya.github.io/TempoSyncDiff)
+
+---
+
+#### Splat-Portrait
+**Developer**: Unknown | **Released**: Jan 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: True Real-Time (60+ FPS)
+- **Hardware**: Mid-to-high end consumer GPUs
+- **Architecture**: 3D Gaussian Splatting (3DGS)
+- **Key Innovation**: Replaces 2D pixels with true 3D mathematical volumes for instantaneous rendering and free camera movement.
+- **Best For**: 3D interactive avatars, VR/AR applications.
+- **Status**: Paperware (GitHub repository exists but is completely empty).
+- **Links**: [GitHub](https://github.com/stonewalking/Splat-portrait) | [Paper](https://arxiv.org/abs/2601.18633)
+
+---
+
+#### JoyVASA + LivePortrait
+**Developer**: JD Health / Zhejiang University | **Released**: Late 2025 / 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐
+
+- **Latency**: True Real-Time (Frame-by-frame)
+- **Hardware**: Consumer GPUs
+- **Architecture**: Audio-to-Keypoint predictor driving LivePortrait
+- **Key Innovation**: Decouples facial expressions from 3D head motion, generating highly expressive head motions natively wrapped around LivePortrait's 60+ FPS engine.
+- **Best For**: Ultra-low latency streaming avatars without heavy diffusion overhead.
+- **Links**: [GitHub](https://github.com/jdh-algo/JoyVASA) | [Project](https://jdh-algo.github.io/JoyVASA/)
+
+---
 
 #### EchoTorrent
 **Developer**: Research Community | **Released**: Feb 2026
