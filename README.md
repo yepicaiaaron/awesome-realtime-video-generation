@@ -306,14 +306,15 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 #### TempoSyncDiff
 **Developer**: VECC / DAE | **Released**: March 2026
-**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ❓ (Unverifiable)
 
-- **Latency**: Few-step distilled diffusion inference
+> ⚠️ **RESEARCHER BEWARE**: The authors published the training math but intentionally withheld the model checkpoints and any generated video samples. **This paper's claims of solving low-latency distillation cannot be verified or trusted** until the authors publish actual visual results or weights. It is highly likely the visual quality is severely degraded.
+
+- **Latency**: Few-step distilled diffusion inference (Claimed)
 - **Hardware**: High-end consumer GPUs (RTX 4090/3090)
 - **Architecture**: Distilled latent diffusion for talking heads
-- **Key Innovation**: Reduces denoising steps while maintaining temporal coherence via identity anchoring and viseme conditioning.
-- **Best For**: Low-latency audio-driven talking head generation.
-- **Status**: Code published, model weights currently withheld.
+- **Key Innovation**: Claims to reduce denoising steps while maintaining temporal coherence via identity anchoring and viseme conditioning.
+- **Status**: 🛑 **Model Weights Withheld / No Video Samples**. Code is useless for inference without running a multi-day training pass on a 100GB dataset.
 - **Links**: [GitHub](https://github.com/MazumdarSoumya/TempoSyncDiff) | [Paper](https://arxiv.org/abs/2603.06057) | [Project](https://mazumdarsoumya.github.io/TempoSyncDiff)
 
 ---
@@ -322,12 +323,13 @@ video = model.generate("Sunset over mountains", num_frames=120)
 **Developer**: Unknown | **Released**: Jan 2026
 **Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
 
+> ⚠️ **RESEARCHER BEWARE - PAPERWARE**: The authors created a GitHub repository and linked it in their arXiv paper to get a "Code" badge, but left the repository completely blank. There are zero commits and no code.
+
 - **Latency**: True Real-Time (60+ FPS)
 - **Hardware**: Mid-to-high end consumer GPUs
 - **Architecture**: 3D Gaussian Splatting (3DGS)
 - **Key Innovation**: Replaces 2D pixels with true 3D mathematical volumes for instantaneous rendering and free camera movement.
-- **Best For**: 3D interactive avatars, VR/AR applications.
-- **Status**: Paperware (GitHub repository exists but is completely empty).
+- **Status**: 🛑 **Paperware / Empty Repo**.
 - **Links**: [GitHub](https://github.com/stonewalking/Splat-portrait) | [Paper](https://arxiv.org/abs/2601.18633)
 
 ---
