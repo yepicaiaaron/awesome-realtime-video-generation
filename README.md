@@ -28,7 +28,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 | Model | TTFF (Time to First Frame) | FPS (Throughput) | Hardware | Status |
 |-------|----------------------------|------------------|----------|--------|
 | [MotionStream](#motionstream) | **<200ms** | 29 | H100 | ✅ Production |
-| [MonarchRT](#monarchrt) | **<300ms** | 16 | RTX 5090 (32GB) | 🔬 Research |
+| [MonarchRT](#monarchrt) | **<300ms** | 16 | RTX 5090 (32GB) | ✅ Production |
 | [LiveTalk](#livetalk) | **<100ms** | 30+ | RTX 4090 | ✅ Production |
 | [MemFlow](#memflow) | **<500ms** | 18.7 | H100 (80GB) | 🔬 Research |
 | [StreamDiT](#streamdit) | **<400ms** | 16 | RTX 4090 | ✅ Production |
@@ -315,7 +315,7 @@ video = model.generate("Sunset over mountains", num_frames=120)
 - **Architecture**: Distilled latent diffusion for talking heads
 - **Key Innovation**: Claims to reduce denoising steps while maintaining temporal coherence via identity anchoring and viseme conditioning.
 - **Status**: 🛑 **Model Weights Withheld / No Video Samples**. Code is useless for inference without running a multi-day training pass on a 100GB dataset.
-- **Links**: [GitHub](https://github.com/MazumdarSoumya/TempoSyncDiff) | [Paper](https://arxiv.org/abs/2603.06057) | [Project](https://mazumdarsoumya.github.io/TempoSyncDiff)
+- **Links**: [GitHub](https://github.com/MazumdarSoumya/TempoSyncDiff) | [Paper](https://arxiv.org/abs/2603.06057)
 
 ---
 
