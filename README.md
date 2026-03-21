@@ -30,7 +30,7 @@ Most video generation research prioritizes quality over speed. This repo focuses
 | [MotionStream](#motionstream) | **<200ms** | 29 | H100 | ✅ Production |
 | [MonarchRT](#monarchrt) | **<300ms** | 16 | RTX 5090 (32GB) | ✅ Production |
 | [LiveTalk](#livetalk) | **<100ms** | 30+ | RTX 4090 | ✅ Production |
-| [MemFlow](#memflow) | **<500ms** | 18.7 | H100 (80GB) | 🔬 Research |
+| [MemFlow](#memflow) | **<500ms** | 18.7 | H100 (80GB) | ✅ Live / Production |
 | [StreamDiT](#streamdit) | **<400ms** | 16 | RTX 4090 | ✅ Production |
 | [S2DiT](#s2dit) | **<1s** | 10 | iPhone 17 Pro | 🔬 Research |
 | [CausVid](#causvid) | **1.3s** | 24 | H100 (80GB) | 🔬 CVPR 2025 |
@@ -302,6 +302,21 @@ video = model.generate("Sunset over mountains", num_frames=120)
 
 
 ### 🗣️ Real-Time Avatar & Talking Head
+*Specialized models for face animation, lip-sync, and full-body avatars.*
+
+#### SoulX-FlashHead / SoulX-LiveAct
+**Developer**: Soul-AILab | **Released**: March 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
+
+- **Latency**: True Real-Time (138+ FPS on A100 / Infinite Streaming via LiveAct)
+- **Hardware**: RTX 4090/5090 or A100 (Single GPU for 1.3B, Multi-GPU for 14B)
+- **Architecture**: Diffusion Transformer (DiT) with Causal/Bidirectional attention.
+- **Key Innovation**: Achieves infinite, hour-scale real-time human animation by utilizing "ConvKV Memory" and "Neighbor Forcing" without degrading quality.
+- **Best For**: Photorealistic, emotionally expressive avatars and real-time streaming interaction.
+- **Status**: Live & Open Source. Weights and inference scripts are publicly available.
+- **Links**: [GitHub (FlashHead)](https://github.com/Soul-AILab/SoulX-FlashHead) | [GitHub (LiveAct)](https://github.com/Soul-AILab/SoulX-LiveAct) | [Paper (LiveAct)](https://arxiv.org/abs/2603.11746)
+
+---
 *Specialized models for face animation, lip-sync, and full-body avatars.*
 
 #### TempoSyncDiff
