@@ -50,11 +50,68 @@ Most video generation research prioritizes quality over speed. This repo focuses
 | [VideoLCM](#videolcm) | ~18s | 24 | H100 (80GB) | 🔬 Research |
 | [SVD-XT (Turbo)](#stable-video-diffusion-turbo) | ~20s | 25 | A100 (40GB) | ✅ Production |
 
+### 🔄 Autoregressive (AR) Video Techniques
+*Models designed for scalable, consistent world modeling via AR diffusion (chunk-by-chunk generation). Rather than full-sequence bidirectional diffusion, these predict the next frames auto-regressively.*
+
+| Model | TTFF / Latency | FPS (Effective) | Hardware | Status |
+|-------|----------------|-----------------|----------|--------|
+| [Helios](#helios) | **Real-Time** | 30+ | RTX 4090 | 🔬 Research |
+| [Pyramid Flow](#pyramidal-flow) | **~15s** | 24 | A100 (80GB) | ✅ Production |
+| [CausVid](#causvid) | **1.3s** | 24 | H100 (80GB) | 🔬 CVPR 2025 |
+| [AR-Diffusion](#ar-diffusion) | **Async** | - | A100 | 🔬 Research |
+| [Diffusion Forcing](#diffusion-forcing) | **Next-token** | - | A100 | 🔬 Research |
+| [BAgger](#bagger) | **Batch AR** | - | A100 | 🔬 Research |
+
 *Benchmarks measured on single GPU inference, T2V generation. Image-to-video typically 30-50% faster.*
 
 ---
 
 ## 🚀 Models by Category
+
+### 🔄 Autoregressive (AR) Video Models
+
+#### Helios
+**Developer**: PKU-YuanGroup | **Released**: March 2026
+**Speed**: ⚡⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: Real-time generation
+- **Hardware**: Consumer GPUs (e.g., RTX 4090)
+- **Architecture**: Autoregressive Diffusion
+- **Key Innovation**: "Real Real-Time Long Video Generation Model" focusing on infinite horizon streaming.
+- **Links**: [Paper](https://arxiv.org/abs/2603.04379) | [Code](https://github.com/PKU-YuanGroup/Helios) | [Project Page](https://pku-yuangroup.github.io/Helios-Page/)
+
+---
+
+#### AR-Diffusion
+**Developer**: iva-mzsun | **Released**: March 2025
+**Speed**: ⚡⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐
+
+- **Latency**: Asynchronous streaming AR
+- **Architecture**: Asynchronous Video Generation with Auto-Regressive Diffusion
+- **Key Innovation**: Decouples the diffusion steps to allow for asynchronous generation and display of frames in real-time.
+- **Links**: [Paper](https://arxiv.org/abs/2503.07418) | [Code](https://github.com/iva-mzsun/AR-Diffusion)
+
+---
+
+#### Diffusion Forcing
+**Developer**: Boyuan Chen et al. | **Released**: July 2024
+**Speed**: ⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
+
+- **Architecture**: Next-token Prediction Meets Full-Sequence Diffusion
+- **Key Innovation**: A paradigm merging the best of autoregressive next-token prediction and full-sequence diffusion for continuous video planning and generation.
+- **Links**: [Paper](https://arxiv.org/abs/2407.01392) | [Code](https://github.com/buoyancy99/diffusion-forcing) | [Project Page](https://boyuan.space/diffusion-forcing)
+
+---
+
+#### BAgger
+**Developer**: Ryan Po et al. | **Released**: December 2025
+**Speed**: ⚡⚡⚡ | **Quality**: ⭐⭐⭐⭐⭐
+
+- **Architecture**: Backwards Aggregation
+- **Key Innovation**: Mitigates drift in autoregressive video diffusion models by aggregating backwards transitions, leading to infinitely scalable video lengths without catastrophic visual collapse.
+- **Links**: [Paper](https://arxiv.org/abs/2512.12080) | [Project Page](https://ryanpo.com/bagger/)
+
+---
 
 ### ⚡ General Real-Time Video Generation
 *Standard Text-to-Video (T2V), Image-to-Video (I2V), and Streaming models focusing on scene generation and action.*
