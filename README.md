@@ -506,6 +506,17 @@ Quality ▲
 | H100 (80GB) | $4.50 | 250 (FastVideo) | $0.018 | Quality priority |
 | RTX 4090 (Local) | $0 (capex) | 200 (SVD-XT) | $0 | Cost-sensitive |
 
+### Measured AMD streaming workloads
+
+[World models on MI355X](https://stayinalive181.github.io/world-models-on-mi355x/) is a Windflow field report from September 12–14, 2026, updated October 21. It documents the hardware, ROCm/PyTorch configurations and upstream fixes for these open-model streaming workloads:
+
+| Workload | Hardware and configuration | Reported measurement |
+|---------|----------------------------|----------------------|
+| LingBot-World v2 14B | 1× AMD Instinct MI355X; 704×384; FlashDreams with incremental Ulysses KV exchange | 16.3 native fps over 30 chunks, against the model's 16 fps clock |
+| JoyAI-Video-Edit | 1× MI355X; 1248×720 at 24 fps; TheRock ROCm nightly, FP8 through hipBLASLt | 443 ms median / 578 ms p90 camera-frame-to-edited-pixels latency during a 60-second synthetic-camera run |
+
+These are different measurement boundaries, not a cross-model ranking. Both use the report's worker over loopback; JoyAI timing ends before network delivery and browser playback. The report links the relevant ROCm fixes, including the credited [JoyAI fork](https://github.com/jammm/JoyAI-Video-Edit). Check its pinned settings before comparing with another deployment.
+
 ---
 
 ## 🏗️ Deployment Guides
